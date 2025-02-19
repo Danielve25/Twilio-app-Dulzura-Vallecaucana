@@ -1,7 +1,8 @@
 require('dotenv').config(); // Cargar variables de entorno desde .env
 const express = require('express');
+const bodyParser = require('body-parser');
 const connectDB = require('./config/db'); // Importar la conexión a MongoDB
-const messageRoutes = require('./routes/messageRoutes'); // Importar las rutas de mensajes
+const messageRoutes = require('./routes/message.Routes'); // Importar las rutas de mensajes
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ const port = process.env.PORT || 3000;
 connectDB();
 
 // Configurar body-parser para manejar solicitudes JSON
-app.use(express.json());
+app.use(bodyParser.json());
 
 // Usar las rutas de mensajes
 app.use('/api', messageRoutes);
